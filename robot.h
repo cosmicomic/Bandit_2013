@@ -1,5 +1,5 @@
-#ifndef ROBOT_H_
-#define ROBOT_H_
+#ifndef _ROBOT_H_
+#define _ROBOT_H_
 
 #include "WPILib.h"
 #include "component.h"
