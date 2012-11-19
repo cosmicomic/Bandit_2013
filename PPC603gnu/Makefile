@@ -9,7 +9,6 @@
 WIND_HOME := $(subst \,/,$(WIND_HOME))
 WIND_BASE := $(subst \,/,$(WIND_BASE))
 WIND_USR := $(subst \,/,$(WIND_USR))
-WRVX_COMPBASE := $(subst \,/,$(WRVX_COMPBASE))
 
 all : pre_build main_all post_build
 
@@ -33,7 +32,7 @@ MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
 WS_ROOT_DIR := C:/WindRiver/workspace
-PRJ_ROOT_DIR := $(WS_ROOT_DIR)/2013_Bandit
+PRJ_ROOT_DIR := $(WS_ROOT_DIR)/SimpleTemplate
 
 
 
@@ -49,13 +48,13 @@ CPU = PPC603
 TOOL_FAMILY = gnu
 TOOL = gnu
 TOOL_PATH = 
-CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp
+CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
 LIBPATH = 
 LIBS = 
 
 IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
 
-IDE_LIBRARIES = 
+IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
 
 IDE_DEFINES = 
 
@@ -80,124 +79,134 @@ endif
 
 
 #Project Targets
-PROJECT_TARGETS = 2013_Bandit/$(MODE_DIR)/2013_Bandit.out \
-	 2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage.o
+PROJECT_TARGETS = SimpleTemplate/$(MODE_DIR)/SimpleTemplate.out \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o
 
 
 #Rules
 
-# 2013_Bandit
+# SimpleTemplate
 ifeq ($(DEBUG_MODE),1)
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
 else
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
-2013_Bandit/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+SimpleTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
 endif
-2013_Bandit/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
-2013_Bandit/$(MODE_DIR)/% : IDE_LIBRARIES = 
-2013_Bandit/$(MODE_DIR)/% : IDE_DEFINES = 
-2013_Bandit/$(MODE_DIR)/% : PROJECT_TYPE = DKM
-2013_Bandit/$(MODE_DIR)/% : DEFINES = 
-2013_Bandit/$(MODE_DIR)/% : EXPAND_DBG = 0
-2013_Bandit/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
-2013_Bandit/$(MODE_DIR)/% : CPU = PPC603
-2013_Bandit/$(MODE_DIR)/% : TOOL_FAMILY = gnu
-2013_Bandit/$(MODE_DIR)/% : TOOL = gnu
-2013_Bandit/$(MODE_DIR)/% : TOOL_PATH = 
-2013_Bandit/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp
-2013_Bandit/$(MODE_DIR)/% : LIBPATH = 
-2013_Bandit/$(MODE_DIR)/% : LIBS = 
-2013_Bandit/$(MODE_DIR)/% : OBJ_DIR := 2013_Bandit/$(MODE_DIR)
+SimpleTemplate/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
+SimpleTemplate/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+SimpleTemplate/$(MODE_DIR)/% : IDE_DEFINES = 
+SimpleTemplate/$(MODE_DIR)/% : PROJECT_TYPE = DKM
+SimpleTemplate/$(MODE_DIR)/% : DEFINES = 
+SimpleTemplate/$(MODE_DIR)/% : EXPAND_DBG = 0
+SimpleTemplate/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
+SimpleTemplate/$(MODE_DIR)/% : CPU = PPC603
+SimpleTemplate/$(MODE_DIR)/% : TOOL_FAMILY = gnu
+SimpleTemplate/$(MODE_DIR)/% : TOOL = gnu
+SimpleTemplate/$(MODE_DIR)/% : TOOL_PATH = 
+SimpleTemplate/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
+SimpleTemplate/$(MODE_DIR)/% : LIBPATH = 
+SimpleTemplate/$(MODE_DIR)/% : LIBS = 
+SimpleTemplate/$(MODE_DIR)/% : OBJ_DIR := SimpleTemplate/$(MODE_DIR)
 
-OBJECTS_2013_Bandit = 2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage.o
+OBJECTS_SimpleTemplate = SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o
 
-2013_Bandit/$(MODE_DIR)/2013_Bandit.out : $(OBJECTS_2013_Bandit)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@";rm -f "$@";nmppc $(OBJECTS_2013_Bandit) $(IDE_LIBRARIES) | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c ppc > $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc $(DEBUGFLAGS_Linker) $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES)  -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X -T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT -o "$@" $(OBJ_DIR)/ctdt.o $(OBJECTS_2013_Bandit) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS)  $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
+SimpleTemplate/$(MODE_DIR)/SimpleTemplate.out : $(OBJECTS_SimpleTemplate)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@";rm -f "$@";nmppc $(OBJECTS_SimpleTemplate) $(IDE_LIBRARIES) | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c ppc > $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc $(DEBUGFLAGS_Linker) $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES)  -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X -T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT -o "$@" $(OBJ_DIR)/ctdt.o $(OBJECTS_SimpleTemplate) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS)  $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
 
-2013_Bandit/$(MODE_DIR)/2013_Bandit_compile_file : $(FILE) ;
+SimpleTemplate/$(MODE_DIR)/SimpleTemplate_compile_file : $(FILE) ;
 
-_clean :: 2013_Bandit/$(MODE_DIR)/2013_Bandit_clean
+_clean :: SimpleTemplate/$(MODE_DIR)/SimpleTemplate_clean
 
-2013_Bandit/$(MODE_DIR)/2013_Bandit_clean : 
-	$(TRACE_FLAG)if [ -d "2013_Bandit" ]; then cd "2013_Bandit"; rm -rf $(MODE_DIR); fi
+SimpleTemplate/$(MODE_DIR)/SimpleTemplate_clean : 
+	$(TRACE_FLAG)if [ -d "SimpleTemplate" ]; then cd "SimpleTemplate"; rm -rf $(MODE_DIR); fi
 
 
-# 2013_Bandit_partialImage
+# SimpleTemplate_partialImage
 ifeq ($(DEBUG_MODE),1)
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
 else
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
 endif
-2013_Bandit_partialImage/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
-2013_Bandit_partialImage/$(MODE_DIR)/% : IDE_LIBRARIES = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : IDE_DEFINES = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : PROJECT_TYPE = DKM
-2013_Bandit_partialImage/$(MODE_DIR)/% : DEFINES = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : EXPAND_DBG = 0
-2013_Bandit_partialImage/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
-2013_Bandit_partialImage/$(MODE_DIR)/% : CPU = PPC603
-2013_Bandit_partialImage/$(MODE_DIR)/% : TOOL_FAMILY = gnu
-2013_Bandit_partialImage/$(MODE_DIR)/% : TOOL = gnu
-2013_Bandit_partialImage/$(MODE_DIR)/% : TOOL_PATH = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp
-2013_Bandit_partialImage/$(MODE_DIR)/% : LIBPATH = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : LIBS = 
-2013_Bandit_partialImage/$(MODE_DIR)/% : OBJ_DIR := 2013_Bandit_partialImage/$(MODE_DIR)
+SimpleTemplate_partialImage/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : IDE_DEFINES = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : PROJECT_TYPE = DKM
+SimpleTemplate_partialImage/$(MODE_DIR)/% : DEFINES = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : EXPAND_DBG = 0
+SimpleTemplate_partialImage/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
+SimpleTemplate_partialImage/$(MODE_DIR)/% : CPU = PPC603
+SimpleTemplate_partialImage/$(MODE_DIR)/% : TOOL_FAMILY = gnu
+SimpleTemplate_partialImage/$(MODE_DIR)/% : TOOL = gnu
+SimpleTemplate_partialImage/$(MODE_DIR)/% : TOOL_PATH = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
+SimpleTemplate_partialImage/$(MODE_DIR)/% : LIBPATH = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : LIBS = 
+SimpleTemplate_partialImage/$(MODE_DIR)/% : OBJ_DIR := SimpleTemplate_partialImage/$(MODE_DIR)
 
-2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.o : $(PRJ_ROOT_DIR)/component.cpp $(FORCE_FILE_BUILD)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
-
-
-2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.o : $(PRJ_ROOT_DIR)/controller.cpp $(FORCE_FILE_BUILD)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.o : $(PRJ_ROOT_DIR)/arm.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.o : $(PRJ_ROOT_DIR)/drive.cpp $(FORCE_FILE_BUILD)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.o : $(PRJ_ROOT_DIR)/component.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.o : $(PRJ_ROOT_DIR)/robot.cpp $(FORCE_FILE_BUILD)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.o : $(PRJ_ROOT_DIR)/controller.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_2013_Bandit_partialImage = 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.o \
-	 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.o \
-	 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.o \
-	 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.o
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.o : $(PRJ_ROOT_DIR)/drive.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
-2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage.o : $(OBJECTS_2013_Bandit_partialImage)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_2013_Bandit_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
 
-2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage_compile_file : $(FILE) ;
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.o : $(PRJ_ROOT_DIR)/launcher.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
-_clean :: 2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage_clean
 
-2013_Bandit_partialImage/$(MODE_DIR)/2013_Bandit_partialImage_clean : 
-	$(TRACE_FLAG)if [ -d "2013_Bandit_partialImage" ]; then cd "2013_Bandit_partialImage"; rm -rf $(MODE_DIR); fi
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.o : $(PRJ_ROOT_DIR)/robot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+OBJECTS_SimpleTemplate_partialImage = SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.o
+
+SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o : $(OBJECTS_SimpleTemplate_partialImage)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_SimpleTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
+
+SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_compile_file : $(FILE) ;
+
+_clean :: SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_clean
+
+SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_clean : 
+	$(TRACE_FLAG)if [ -d "SimpleTemplate_partialImage" ]; then cd "SimpleTemplate_partialImage"; rm -rf $(MODE_DIR); fi
 
 force : 
 
-DEP_FILES := 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.d 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.d 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.d \
-	 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.d
+DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.d \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.d
 -include $(DEP_FILES)
 
 
@@ -206,15 +215,8 @@ DEP_FILES := 2013_Bandit_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.
 
 -include *.makefile
 
-JOBS?=1
-ifeq ($(JOBS),1)
-main_all : external_build  $(PROJECT_TARGETS)
+main_all : external_build $(PROJECT_TARGETS)
 	@echo "make: built targets of `pwd`"
-else
-main_all : external_build 
-	@$(MAKE) -f $(MAKEFILE) --jobs $(JOBS) $(MFLAGS) $(PROJECT_TARGETS);\
-	echo "make: built targets of `pwd`"
-endif 
 
 # entry point for extending the build
 external_build ::

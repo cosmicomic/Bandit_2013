@@ -5,6 +5,9 @@
 #include "component.h"
 #include "ports.h"
 #include "drive.h"
+#include "controller.h"
+#include "arm.h"
+#include "launcher.h"
 
 class MainRobot : public SimpleRobot {
 public:
@@ -12,7 +15,13 @@ public:
 	void RobotInit(void);
 	void Autonomous();
 	
+private:
+	static const double cMotorWait = 0.01;
+	static const double cWatchdogExpiration = 1;
+	
 protected:
+	Watchdog *mWatchdog;
+	
 	Joystick *mRightJoystick;
 	Joystick *mLeftJoystick;
 	Joystick *mTwistJoystick;
@@ -22,12 +31,27 @@ protected:
 	SpeedController *mFrontLeftMotor;
 	SpeedController *mFrontRightMotor;
 	
-	map<string, Component *>mComponents;
+	SpeedController *mTopLeftMotor;
+	SpeedController *mTopRightMotor;
+	SpeedController *mBottomLeftMotor;
+	SpeedController *mBottomRightMotor;
+	
+	SpeedController *mElevatorMotor;
+	
+	SpeedController *mArmMotor;
+	
+	DigitalInput *mElevatorLimitSwitch;
+	DigitalInput *mArmBackLimitSwitch;
+	DigitalInput *mArmFrontLimitSwitch;
+	
+	map<string, Component *> mComponents;
 	Drive *mDrive;
 	RobotDrive *mRobotDrive;
-	/*Shooter *mShooter;
+	Launcher *mLauncher;
+	Elevator *mElevator;
+	Shooter *mShooter;
 	Arm *mArm;
-	Controller *mController;	*/
+	JoystickController *mJoystickController;
 };
 
 #endif

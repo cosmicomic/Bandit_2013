@@ -4,18 +4,28 @@
 #include "WPILib.h"
 #include "component.h"
 #include "drive.h"
+#include "launcher.h"
+#include "arm.h"
 
-class JoystickController : public Component {
+class Controller {
+	// none
+};
+
+class JoystickController : public Controller {
 public:
 	Joystick *mLeftJoystick;
 	Joystick *mRightJoystick;
 	Joystick *mTwistJoystick;
-	map<string, Component *> *mComponents;
+	map<string, Component *> mComponents;
 	Drive *mDrive;
+	Launcher *mLauncher;
+	Arm *mArm;
 	void Run(void);
-	JoystickController(Joystick *, Joystick *, Joystick *, map<string, Component *> *);
+	JoystickController(Joystick *, Joystick *, Joystick *, map<string, Component *>&);
 protected:
-	void RunDrive(Drive *);
+	void RunDrive();
+	void RunLauncher();
+	void RunArm();
 };
 
 #endif
