@@ -1,8 +1,12 @@
 #include "launcher.h"
 
-Launcher::Launcher(Elevator *elevator, Shooter *shooter) {
+Launcher::Launcher(Elevator *elevator, Shooter *shooter) : Component() {
 	mElevator = elevator;
 	mShooter = shooter;
+}
+
+Launcher::~Launcher() {
+	//
 }
 
 Elevator::Elevator(DigitalInput *limitSwitch, SpeedController *elevatorMotor) {
@@ -10,11 +14,19 @@ Elevator::Elevator(DigitalInput *limitSwitch, SpeedController *elevatorMotor) {
 	mElevatorMotor = elevatorMotor;
 }
 
+Elevator::~Elevator() {
+	//
+}
+
 Shooter::Shooter(SpeedController *topLeft, SpeedController *topRight, SpeedController *bottomLeft, SpeedController *bottomRight) {
 	mTopLeftMotor = topLeft;
 	mTopRightMotor = topRight;
 	mBottomLeftMotor = bottomLeft;
 	mBottomRightMotor = bottomRight;
+}
+
+Shooter::~Shooter() {
+	//
 }
 
 void Shooter::SetSpeed(double speed) {

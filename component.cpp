@@ -3,3 +3,7 @@
 Component::Component() {
 	//empty
 }
+
+Component::~Component() {
+	//
+}

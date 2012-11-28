@@ -7,6 +7,7 @@
 class Arm : public Component {
 public:
 	Arm(SpeedController *, DigitalInput *, DigitalInput *);
+	~Arm();
 	void MoveForward();
 	void MoveBackward();
 	void Stop();

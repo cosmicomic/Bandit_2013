@@ -14,6 +14,7 @@ public:
 	void OperatorControl();
 	void RobotInit(void);
 	void Autonomous();
+	~MainRobot();
 	
 private:
 	static const double cMotorWait = 0.01;

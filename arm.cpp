@@ -1,13 +1,13 @@
 #include "arm.h"
 
-Arm::Arm(SpeedController *armMotor, DigitalInput *backLimitSwitch, DigitalInput *frontLimitSwitch) {
+Arm::Arm(SpeedController *armMotor, DigitalInput *backLimitSwitch, DigitalInput *frontLimitSwitch) : Component() {
 	mArmMotor = armMotor;
 	mBackLimitSwitch = backLimitSwitch;
 	mFrontLimitSwitch = frontLimitSwitch;
 }
 
 void Arm::MoveForward() {
-	if (!mFrontLimitSwitch) {
+	if (!mFrontLimitSwitch->Get()) {
 		mArmMotor->Set(cArmSpeed);
 	} else {
 		Stop();
@@ -15,11 +15,15 @@ void Arm::MoveForward() {
 }
 
 void Arm::MoveBackward() {
-	if (!mBackLimitSwitch) {
+	if (!mBackLimitSwitch->Get()) {
 		mArmMotor->Set(-cArmSpeed);
 	} else {
 		Stop();
 	}
+}
+
+Arm::~Arm() {
+	//
 }
 
 void Arm::Stop() {

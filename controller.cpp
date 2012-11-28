@@ -7,11 +7,11 @@ JoystickController::JoystickController(Joystick *lStick, Joystick *rStick, Joyst
 	
 	mComponents = components;
 	
-	if (mComponents.count("Drive")) {
+	if (mComponents.count("Drive") > 0) {
 		mDrive = (Drive *) mComponents.find("Drive")->second;
-	} else if (mComponents.count("Launcher")) {
+	} else if (mComponents.count("Launcher") > 0) {
 		mLauncher = (Launcher *) mComponents.find("Launcher")->second;
-	} else if (mComponents.count("Arm")) {
+	} else if (mComponents.count("Arm") > 0) {
 		mArm = (Arm *) mComponents.find("Arm")->second;
 	}
 }

@@ -32,7 +32,7 @@ MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
 WS_ROOT_DIR := C:/WindRiver/workspace
-PRJ_ROOT_DIR := $(WS_ROOT_DIR)/SimpleTemplate
+PRJ_ROOT_DIR := $(WS_ROOT_DIR)/2013_Bandit
 
 
 
@@ -162,36 +162,36 @@ SimpleTemplate_partialImage/$(MODE_DIR)/% : LIBPATH =
 SimpleTemplate_partialImage/$(MODE_DIR)/% : LIBS = 
 SimpleTemplate_partialImage/$(MODE_DIR)/% : OBJ_DIR := SimpleTemplate_partialImage/$(MODE_DIR)
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.o : $(PRJ_ROOT_DIR)/arm.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/arm.o : $(PRJ_ROOT_DIR)/arm.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.o : $(PRJ_ROOT_DIR)/component.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.o : $(PRJ_ROOT_DIR)/component.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.o : $(PRJ_ROOT_DIR)/controller.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.o : $(PRJ_ROOT_DIR)/controller.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.o : $(PRJ_ROOT_DIR)/drive.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.o : $(PRJ_ROOT_DIR)/drive.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.o : $(PRJ_ROOT_DIR)/launcher.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/launcher.o : $(PRJ_ROOT_DIR)/launcher.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.o : $(PRJ_ROOT_DIR)/robot.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.o : $(PRJ_ROOT_DIR)/robot.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_SimpleTemplate_partialImage = SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.o
+OBJECTS_SimpleTemplate_partialImage = SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/arm.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/launcher.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.o
 
 SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o : $(OBJECTS_SimpleTemplate_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_SimpleTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -205,8 +205,8 @@ SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_clean :
 
 force : 
 
-DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/arm.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/component.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/controller.d \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/drive.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/launcher.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/SimpleTemplate/robot.d
+DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/arm.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/component.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/controller.d \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/drive.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/launcher.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/2013_Bandit/robot.d
 -include $(DEP_FILES)
 
 

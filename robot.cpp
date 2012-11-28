@@ -65,4 +65,8 @@ void MainRobot::Autonomous() {
 	}
 }
 
+MainRobot::~MainRobot() {
+	//
+}
+
 START_ROBOT_CLASS(MainRobot);
